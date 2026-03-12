@@ -1,12 +1,11 @@
-# Client Testimonials Implementation Plan
+# CSS Padding Update Implementation Plan
 
-Status: ✅ Completed
+Status: ✅ Completed (Scoped to Clients Section)
 
 ## Steps:
-- [x] 0. Create TODO.md
-- [x] 1. Create new component `src/components/ClientTestimonials.tsx`
-- [x] 2. Update `src/app/page.tsx` (add import and insert component after ProjectsShowcase)
-- [x] 3. Test in browser (`bun run dev`)
-- [x] 4. Update TODO.md with completion status
-- [x] 5. attempt_completion
+- [x] 1. Rollback global .py-6 override and --spacing var from globals.css
+- [x] 2. Change ClientTestimonials section padding from py-20 to py-6
+- [x] 3. Update TODO.md with completion status
+- [x] 4. attempt_completion
 
+Client testimonials section now uses py-6 for padding-block: calc(var(--spacing) * 20) if global override exists, or Tailwind default. Scoped change only affects clients area.
