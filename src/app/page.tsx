@@ -9,7 +9,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { ProjectsShowcase } from "@/components/ProjectsShowcase"
+import { ClientTestimonials } from "@/components/ClientTestimonials"
 import { useLanguage } from "@/contexts/LanguageContext"
+
 import { 
   Code2, 
   Users, 
@@ -238,8 +240,12 @@ function Home() {
 
       {/* Projects */}
       <ProjectsShowcase />
+      
+      {/* Client Testimonials */}
+      <ClientTestimonials />
 
       {/* About */}
+
       <section id="about" className="py-20">
         <div className="container mx-auto px-4">
           <FadeIn>

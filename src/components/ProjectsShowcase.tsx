@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Star } from 'lucide-react'
-import { useLanguage } from '@/contexts/LanguageContext'
+import { motion } from "framer-motion"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Star } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 interface Project {
   name: string
@@ -12,46 +12,20 @@ interface Project {
 }
 
 export function ProjectsShowcase() {
-  const { t, dir } = useLanguage()
+  const { dir } = useLanguage()
 
   const projectLogos: Project[] = [
-    { name: 'Alaqaar', file: 'br-alaqaar.jpg' },
-    { name: 'Balad', file: 'br-balad.jpg' },
-    { name: 'ContactCars', file: 'br-contactcars.jpg' },
-    { name: 'EFG Hermes', file: 'br-efg.jpg' },
-    { name: 'El Abd', file: 'br-elabd.png' },
-    { name: 'Elites Solutions', file: 'br-elitessolutions.jpg' },
-    { name: 'Furn', file: 'br-furn.jpg' },
-    { name: 'Jamjoom', file: 'br-jamjoom.jpg' },
-    { name: 'Moqawalat', file: 'br-moqawalat.jpg' },
-    { name: 'Valu', file: 'br-valu.jpg' }
+    { name: "Alaqaar", file: "br-alaqaar.jpg" },
+    { name: "Balad", file: "br-balad.jpg" },
+    { name: "ContactCars", file: "br-contactcars.jpg" },
+    { name: "EFG Hermes", file: "br-efg.jpg" },
+    { name: "El Abd", file: "br-elabd.png" },
+    { name: "Elites Solutions", file: "br-elitessolutions.jpg" },
+    { name: "Furn", file: "br-furn.jpg" },
+    { name: "Jamjoom", file: "br-jamjoom.jpg" },
+    { name: "Moqawalat", file: "br-moqawalat.jpg" },
+    { name: "Valu", file: "br-valu.jpg" }
   ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: { 
-    opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.4, ease: 'easeOut' }
-    },
-    hover: { 
-      scale: 1.05,
-      y: -10,
-      transition: { duration: 0.3 }
-    }
-  }
 
   return (
     <section id="projects" className="py-20 bg-gradient-to-b from-cyan-50 to-emerald-50 dark:from-slate-900/50">
@@ -61,34 +35,35 @@ export function ProjectsShowcase() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-16 max-w-4xl mx-auto"
+          viewport={{ once: true }}
         >
           <Badge variant="outline" className="mb-6 inline-flex px-4 gap-2">
-            <Star className={`h-4 w-4 ${dir === 'rtl' ? 'ml-1' : 'mr-1'}`} />
-Portfolio
+            <Star className={`h-4 w Ascending-4 ${dir === 'rtl' ? 'ml-1' : 'mr-1'}`} />
+            <span>Portfolio</span>
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-600 to-emerald-600 bg-clip-text text-transparent">
-Our Projects
+            Our Projects
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-Trusted by leading companies
+            Trusted by leading companies
           </p>
         </motion.div>
 
         {/* Logos Grid */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          transition={{ staggerChildren: 0.1 }}
         >
-          {projectLogos.map((project, index) => (
+          {projectLogos.map((project) => (
             <motion.div
               key={project.name}
-              variants={cardVariants}
+              whileHover={{ scale: 1.05, y: -8 }}
               className="group"
             >
-              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-2xl bg-card/80 backdrop-blur-sm transition-all duration-500 group-hover:bg-card hover:-translate-y-2">
+              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-2xl bg-card/80 backdrop-blur-sm transition-all duration-500 group-hover:bg-card">
                 <CardContent className="p-8">
                   <div className="relative w-24 h-24 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <div className="absolute inset-0 bg-gradient-to-r from-muted/50 to-transparent rounded-xl blur-sm group-hover:opacity-0 transition-all duration-500" />
@@ -110,3 +85,4 @@ Trusted by leading companies
     </section>
   )
 }
+
